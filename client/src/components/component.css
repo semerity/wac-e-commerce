@@ -1,0 +1,425 @@
+.cards {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-content: space-between;
+
+    /* background-color: lightgray; */
+    padding: 1svw;
+
+    width: 280px;
+    height: 400px;
+
+    color: black;
+
+    &.skeleton {
+        background-color: var(--background);
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+        .blocks {
+            div {
+                background-color: var(--background);
+                animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+        }
+    }
+    .blocks {
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        top: -25px;
+        left: 0;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-evenly;
+
+        div {
+            width: 35%;
+            height: 30%;
+        }
+    }
+
+    img {
+        max-height: 50%;
+        max-width: 90%;
+        align-self: center;
+    }
+    h3 {
+        font-size: 2.5svh;
+    }
+    .marque {
+        font-style: italic;
+    }
+    .nouveau{
+        position: absolute;
+        bottom: 0;
+        left:0;
+        padding: 10px;
+        background-color: gold;
+        margin: 1svw;
+    }
+    .price {
+        position: relative;
+        display: flex;
+        align-self: flex-end;
+
+        .nb {
+            font-size: 4svh;
+        }
+        .currency {
+            position: relative;
+            bottom: -2.2svh;
+            right: 0;
+        }
+        .raye{
+            display: flex;
+            align-items: center;
+            .nb{
+                font-size: 2svh;
+                text-decoration: line-through solid black 1px;
+            }
+            .currency{
+                bottom: 0;
+                text-decoration: line-through solid black 1px;
+            }
+        }
+    }
+}
+
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #737373;
+}
+.rate:not(:checked)>label:before {
+    content: '★ ';
+}
+.rate>input:checked~label {
+    color: #ffd901;
+}
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #fac70f;
+}
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #fac70f;
+}
+
+
+#addAv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+
+    h2 {
+        font-size: 3svh;
+        margin-bottom: 1svh;
+    }
+
+    textarea {
+        max-width: 100%;
+        /* min-width: 100%; */
+    }
+
+    .duo {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+#avisDiv {
+    display: 	flex;
+    flex-direction: column;
+    margin-top: 50px;
+    h2 {
+        font-size: 3svh;
+    }
+    .avis {
+        display: block;
+        margin: 25px 0px;
+        .note {
+            font-size: 2svh;
+            &::first-letter {
+                font-size: 3svh;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+#themes {
+    padding: 3svh;
+    display: flex;
+    flex-direction: column;
+    gap: 1svh;
+
+    h2 {
+        font-size: 6svh;
+        margin-bottom: 1svh;
+    }
+
+    .theme {
+        display: flex;
+        gap: 1svh;
+
+        input {
+            padding: 10px;
+            border: none;
+
+            &:hover {
+                border: solid black 2px;
+                padding: 8px;
+            }
+            &[type="color"] {
+                height: auto;
+                padding: 5px;
+            }
+        }
+        .delete {
+            background-color: rgb(255, 96, 96);
+        }
+        button {
+            padding: 10px;
+            border: none;
+
+            &:hover {
+                border: solid black 2px;
+                padding: 8px;
+            }
+        }
+    }
+
+}
+
+#basket {
+    display: flex;
+
+    #nbInBasket {
+        align-self: flex-end;
+        font-size: 2svh;
+        border-radius: 50%;
+        text-align: center;
+        justify-content: center;
+        padding-top: .4svh;
+        height: 3svh;
+        width: 3svh;
+        background-color: var(--background1);
+    }
+
+    p {
+        font-size: 4svh;
+        color: black;
+        user-select: none;
+        cursor: pointer;
+        &:hover {
+            color: rgb(82, 82, 82);
+        }
+    }
+
+    #basketContent {
+        right: 0px;
+        top: 15svh;
+        margin: 10px;
+        padding: 10px;
+        max-width: 100svw;
+        min-width: fit-content;
+        max-height: 75svh;
+        background-color: var(--background);
+        position: absolute;
+        z-index: 12;
+        display: flex;
+        flex-direction: column;
+        gap: 1svh;
+
+        .cartContent {
+            background-color: var(--background1);
+            display: flex;
+            align-items: center;
+            gap: 1svw;
+
+            p {
+                font-size: 2.5svh;
+            }
+            img {
+                max-height: 10svh;
+                max-width: 10svh;
+            }
+            .trash {
+                cursor: pointer;
+            }
+            .reduc{
+                display: flex;
+                gap: 5px;
+
+                .old{
+                    text-decoration: line-through solid 1px black;
+                }
+            }
+        }
+        #basketRecap {
+            display: flex;
+            justify-content: space-between;
+            p, a {
+                font-size: 2.5svh;
+            }
+        }
+    }
+
+}
+
+.CarrousselComponent {
+    position: relative;
+    height: 55svh;
+    background-color: var(--background1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: var(--background1);
+    
+    &:hover {
+        border: solid var(--background) 1svh;
+        img{
+            max-width: 70%;
+            max-height: 40svh;
+        }
+    }
+    img {
+        transition: all linear .1s;
+        position: absolute;
+        display: none;
+        max-width: 90%;
+        max-height: 50svh;
+
+        &.visible {
+            display: block;
+        }
+    }
+}
+#pays, #methods, #commandesAdmin, #events{
+    padding: 3svh;
+    display: flex;
+    flex-direction: column;
+    gap: 1svh;
+
+    .onePays, #addPays, .oneMethod, #addMethodn .oneCommande, .oneEvent, #addEvent {
+        display: flex;
+        gap: 1svh;
+
+
+        input {
+            padding: 10px;
+            border: none;
+
+            &:hover {
+                border: solid black 2px;
+                padding: 8px;
+            }
+            &[type="color"] {
+                height: auto;
+                padding: 5px;
+            }
+        }
+        p{
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 35px;
+
+            &.p{
+                padding: 10px;
+                min-width: 126.5px;
+
+                &.nom{
+                    min-width: 175.5px;
+                }
+            }
+        }
+        #searchP{
+            width: 35px;
+        }
+        .delete {
+            background-color: rgb(255, 96, 96);
+        }
+        button {
+            padding: 10px;
+            border: none;
+
+            &:hover {
+                border: solid black 2px;
+                padding: 8px;
+            }
+        }
+        .price{
+            width: 7svh;
+        }
+        .prix{
+            width: 70px;
+        }
+        .adresse{
+            width: 300px;
+        }
+    }
+}
+
+table#commandes{
+    caption{
+        font-weight: 600;
+    }
+    thead, tbody{
+        background-color: var(--background1);
+        
+        tr{
+
+            th,td{
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1000px) {}
+@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 450px) {}
